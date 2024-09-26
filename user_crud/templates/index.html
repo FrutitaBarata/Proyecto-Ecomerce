@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Usuarios</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h1 class="mt-5">Lista de Usuarios</h1>
+        <table class="table mt-3" id="userTable">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nombre</th>
+                    <th>Usuario</th>
+                    <th>Email</th>
+                    <th>Rol</th> <!-- Nueva columna para el rol -->
+                    <th>Imagen</th> <!-- Nueva columna para la imagen -->
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Aquí se llenarán los datos de los usuarios -->
+            </tbody>
+        </table>
+    </div>
+
+    <script>
+        $(document).ready(function() {
+            // Hacer una solicitud a la API para obtener los usuarios
+            $.getJSON('/api/users', function(data) {
+                var rows = '';
+                data.forEach(function(user) {
+                    rows += '<tr>';
+                    rows += '<td>' + user.id + '</td>';
+                    rows += '<td>' + user.name + '</td>';
+                    rows += '<td>' + user.username + '</td>';
+                    rows += '<td>' + user.email + '</td>';
+                    rows += '<td>' + user.rol + '</td>'; // Agregar rol
+                    rows += '<td><img src="' + user.image + '" alt="" style="width: 50px; height: 50px; object-fit: cover; border-radius: 50%;">'; // Agregar imagen
+                    rows += '</tr>';
+                });
+                $('#userTable tbody').html(rows); // Llenar el cuerpo de la tabla
+            });
+        });
+    </script>
+</body>
+</html>
