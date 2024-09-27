@@ -5,11 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lista de Usuarios</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/static/css/dark-mode.css"> <!-- Enlace a dark-mode.css -->
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 </head>
 <body>
     <div class="container">
-        <h1 class="mt-5">Lista de Usuarios</h1>
+        <h1 class="mt-5 text-center">Lista de Usuarios</h1>
         <table class="table mt-3" id="userTable">
             <thead>
                 <tr>
@@ -39,7 +40,7 @@
                     rows += '<td>' + user.username + '</td>';
                     rows += '<td>' + user.email + '</td>';
                     rows += '<td>' + user.rol + '</td>'; // Agregar rol
-                    rows += '<td><img src="' + user.image + '" alt="" style="width: 50px; height: 50px; object-fit: cover; border-radius: 50%;">'; // Agregar imagen
+                    rows += '<td><img src="' + user.image + '" alt="" style="width: 50px; height: 50px; object-fit: cover; border-radius: 50%;"></td>'; // Agregar imagen
                     rows += '</tr>';
                 });
                 $('#userTable tbody').html(rows); // Llenar el cuerpo de la tabla
