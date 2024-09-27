@@ -1,6 +1,8 @@
 from flask_restful import Api, Resource  # Importamos Api y Resource para crear recursos RESTful
 from user_repository import UserRepository  # Importamos el repositorio de usuarios para manejar las operaciones con la base de datos
 from user_service import UserService  # Importamos el servicio de usuario para aplicar lógica de negocio
+from flask import Flask, app, request, jsonify, render_template  # Importamos Flask y herramientas para manejar solicitudes y respuestas en formato JSON
+from user import User
 
 def create_api(app):
     api = Api(app)  # Inicializamos la API con la aplicación Flask
@@ -34,8 +36,7 @@ def create_api(app):
     class UserResource(Resource):
         def get(self):
             users = UserRepository.get_all_users()  # Obtenemos todos los usuarios
-            return [{"id": user.id,"name": user.name, "username": user.username,"email":user.email, "password":user.password,
-            "updated_at":user.updated_at, "image":user.image, "rol":user.rol} for user in users]  # Retornamos la lista de usuarios
+            return [user.to_dict() for user in users]  # Serializar cada usuario
 
         def post(self):
             data = app.request.get_json()  # Obtenemos los datos JSON de la solicitud
@@ -89,8 +90,13 @@ def create_api(app):
 
     # Definimos las rutas para cada recurso
     api.add_resource(UserByFieldResource, '/users/search/<string:field_name>/<string:value>')    
-    api.add_resource(UserResource, '/users')
+    api.add_resource(UserResource, '/api/users')
     api.add_resource(SingleUserResource, '/users/<int:user_id>')
     api.add_resource(LoginResource, '/login')
+
+    @app.route('/users', methods=['GET'])
+    def users():
+        return render_template('index.html')  # Renderiza la plantilla HTML
+   
 
     return api  # Retornamos la API con las rutas configuradas

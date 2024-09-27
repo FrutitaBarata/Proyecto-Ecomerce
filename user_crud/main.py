@@ -1,6 +1,9 @@
-from flask import Flask, request, jsonify  # Importamos Flask y herramientas para manejar solicitudes y respuestas en formato JSON
+
+from flask import Flask, request, jsonify, render_template
 from user import db  # Importamos la base de datos desde el módulo 'user'
 from user_controller import create_api  # Importamos la función que crea las rutas de la API desde 'user_controller'
+from user_repository import UserRepository
+
 
 app = Flask(__name__)  # Inicializamos la aplicación Flask
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///users.db'  # Configuramos la base de datos SQLite
