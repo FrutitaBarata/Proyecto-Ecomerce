@@ -9,6 +9,21 @@
 </head>
 <body>
     <h1>Lista de Productos</h1>
+
+    <!-- Barra de búsqueda -->
+    <form method="GET" action="/products/search">
+        <label for="field_name">Buscar por:</label>
+        <select name="field_name" id="field_name">
+            <option value="name">Nombre</option>
+            <option value="description">Descripción</option>
+            <option value="price">Precio</option>
+            <option value="category">Categoría</option>
+        </select>
+        
+        <input type="text" name="value" placeholder="Buscar producto...">
+        <button type="submit">Buscar</button>
+    </form>
+
     <div class="products-container">
         {% for product in products %}
             <div class="product-card">

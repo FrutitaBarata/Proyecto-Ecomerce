@@ -44,13 +44,49 @@ def create_api(app):
                 return {'message': 'Product not found'}, 404
             return {'message': 'Product deleted successfully'}
         
+    
+
+
+    class ProductByFieldResource(Resource):
+        def get(self, field_name, value):
+            # Verificamos que el campo sea válido antes de realizar la búsqueda
+            valid_fields = ['name', 'description', 'price', 'category', 'stock', 'image']
+            if field_name not in valid_fields:
+                return {"message": "Campo inválido"}, 400  # Retornamos error si el campo no es válido
+        
+            # Obtenemos los productos por el campo específico
+            products = ProductRepository.get_product_by_field(field_name, value)
+        
+        # Si encontramos productos, renderizamos el primer producto encontrado
+            if products:
+                product = products[0]  # Renderizamos solo el primer producto
+                return render_template('product_detail.html', product=product)
+            else:
+                return {"message": "No se encontraron productos"}, 404  # Retornamos error si no se encuentran productos
+        
         
      
         
     @app.route('/products', methods=['GET'])
     def show_products():
         products = ProductRepository.get_all_products()  # Obtén todos los productos
-        return render_template('products.html', products=products)  # Renderiza la plantilla con los productos    
+        return render_template('products.html', products=products)  # Renderiza la plantilla con los productos 
+    
+    
+    @app.route('/products/search', methods=['GET'])
+    def search_products():
+        field_name = request.args.get('field_name')  # Obtener el campo de búsqueda
+        value = request.args.get('value')  # Obtener el valor de búsqueda
+
+        if not field_name or not value:
+            return "Por favor, proporciona un campo y un valor de búsqueda", 400
+
+    # Realiza la búsqueda utilizando el repositorio
+        products = ProductRepository.get_product_by_field(field_name, value)
+
+    # Renderiza la plantilla con los productos encontrados
+        return render_template('products.html', products=products)
+   
 
     # Ruta para mostrar los detalles de un producto
     @app.route('/products/<int:product_id>', methods=['GET'])
@@ -65,5 +101,6 @@ def create_api(app):
     # Definimos las rutas para cada recurso
     api.add_resource(ProductResource, '/api/products')
     api.add_resource(SingleProductResource, '/products/<int:product_id>')
-
+# Agregar la ruta para buscar productos por campo
+    api.add_resource(ProductByFieldResource, '/api/products/search/<string:field_name>/<string:value>')
     return api
