@@ -13,3 +13,15 @@ class User(db.Model):
     updated_at =  db.Column(db.String(120), nullable=False)  # Fecha de actualización del perfil
     image = db.Column(db.String(255), nullable=True)  # Imagen del perfil del usuario, opcional
     rol = db.Column(db.String(50), nullable=False)  # Rol del usuario, obligatorio
+    
+    def to_dict(self):
+        """Convierte el modelo a un diccionario para serialización."""
+        return {
+            "id": self.id,
+            "name": self.name,
+            "username": self.username,
+            "email": self.email,
+            "rol": self.rol,
+            "updated_at": self.updated_at,
+            "image": self.image
+        }

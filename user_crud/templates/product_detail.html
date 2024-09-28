@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ product.name }}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet" href="/static/css/dark-mode.css"> <!-- Enlace a dark-mode.css -->
+</head>
+<body>
+    <h1>{{ product.name }}</h1>
+
+    <!-- Barra de búsqueda -->
+    <form method="GET" action="/products/search">
+        <label for="field_name">Buscar por:</label>
+        <select name="field_name" id="field_name">
+            <option value="name">Nombre</option>
+            <option value="description">Descripción</option>
+            <option value="price">Precio</option>
+            <option value="category">Categoría</option>
+        </select>
+        
+        <input type="text" name="value" placeholder="Buscar producto...">
+        <button type="submit">Buscar</button>
+    </form>
+
+    <p>Descripción: {{ product.description }}</p>
+    <p>Precio: ${{ product.price }}</p>
+    <p>Categoría: {{ product.category }}</p>
+    <a href="/products">Volver a la lista de productos</a>
+</body>
+</html>
