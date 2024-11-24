@@ -70,7 +70,7 @@ def create_api(app):
     @app.route('/products', methods=['GET'])
     def show_products():
         products = ProductRepository.get_all_products()  # Obtén todos los productos
-        return render_template('products.html', products=products)  # Renderiza la plantilla con los productos 
+        return render_template('prueba.html', products=products)  # Renderiza la plantilla con los productos 
     
     
     @app.route('/products/search', methods=['GET'])
