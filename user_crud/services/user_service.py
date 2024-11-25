@@ -1,4 +1,4 @@
-from user_repository import UserRepository  # Importamos el repositorio de usuarios
+from repositories.user_repository import UserRepository  # Importamos el repositorio de usuarios
 
 class UserService:
 

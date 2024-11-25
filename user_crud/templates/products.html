@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Productos</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <h1>Lista de Productos</h1>
+
+    <!-- Formulario de búsqueda -->
+    <form method="GET" action="/products">
+        <label for="field_name">Buscar por:</label>
+        <select name="field_name" id="field_name">
+            <option value="name">Nombre</option>
+            <option value="description">Descripción</option>
+            <option value="price">Precio</option>
+            <option value="category">Categoría</option>
+        </select>
+        
+        <input type="text" name="value" placeholder="Buscar producto...">
+        <button type="submit">Buscar</button>
+    </form>
+
+    <div class="products-container">
+        {% for product in products %}
+            <div class="product-card">
+                <h2>{{ product.name }}</h2>
+                <p>Descripción: {{ product.description }}</p>
+                <p>Precio: ${{ product.price }}</p>
+                <p>Categoría: {{ product.category }}</p>
+                <a href="/products/{{ product.id }}">Ver Detalles</a>
+                <!-- Botón de agregar al carrito -->
+                <a href="/add_to_cart/{{ product.id }}">Agregar al Carrito</a>
+            </div>
+        {% endfor %}
+    </div>
+
+    <!-- Enlace al carrito -->
+    <div>
+        <a href="/cart">Ver Carrito</a>
+    </div>
+</body>
+</html>

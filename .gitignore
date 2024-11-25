@@ -1,0 +1,35 @@
+# Ignorar archivos de Python
+_pycache_/
+*.pyc
+*.pyo
+*.pyd
+
+# Ignorar archivos de configuración de entorno
+.env
+
+# Ignorar carpetas y archivos de configuración de VSCode
+.vscode/
+
+# Ignorar archivos de dependencias de Python
+*.egg
+*.egg-info/
+dist/
+build/
+eggs/
+pip-wheel-metadata/
+
+# Ignorar archivos de logs
+*.log
+
+# Ignorar archivos de pruebas generados
+*.coverage
+*.hypothesis/
+.nox/
+.tox/
+
+# Ignorar el entorno virtual
+env/
+venv/
+
+# Ignorar archivos de caché de herramientas de Python
+*.cache

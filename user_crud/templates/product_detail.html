@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalles del Producto</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <h1>Detalles del Producto</h1>
+
+    <div class="product-details-container">
+        <div class="product-card">
+            <h2>{{ product.name }}</h2>
+            <p><strong>Descripción:</strong> {{ product.description }}</p>
+            <p><strong>Precio:</strong> ${{ product.price }}</p>
+            <p><strong>Categoría:</strong> {{ product.category }}</p>
+            <a href="/add_to_cart/{{ product.id }}">Agregar al Carrito</a>
+        </div>
+    </div>
+
+    <!-- Enlace al carrito -->
+    <div>
+        <a href="/cart">Ver Carrito</a>
+    </div>
+</body>
+</html>

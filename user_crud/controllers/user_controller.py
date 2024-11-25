@@ -1,8 +1,8 @@
 from flask_restful import Api, Resource  # Importamos Api y Resource para crear recursos RESTful
-from user_repository import UserRepository  # Importamos el repositorio de usuarios para manejar las operaciones con la base de datos
-from user_service import UserService  # Importamos el servicio de usuario para aplicar lógica de negocio
+from repositories.user_repository import UserRepository  # Importamos el repositorio de usuarios para manejar las operaciones con la base de datos
+from services.user_service import UserService  # Importamos el servicio de usuario para aplicar lógica de negocio
 from flask import Flask, app, request, jsonify, render_template  # Importamos Flask y herramientas para manejar solicitudes y respuestas en formato JSON
-from user import User
+from user_crud.models.user import User
 
 def create_api(app):
     api = Api(app)  # Inicializamos la API con la aplicación Flask

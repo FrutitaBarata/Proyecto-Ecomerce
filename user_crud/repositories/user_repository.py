@@ -1,4 +1,4 @@
-from user import db, User  # Importamos la base de datos y el modelo de usuario
+from user_crud.models.user import db, User  # Importamos la base de datos y el modelo de usuario
 
 class UserRepository:
 

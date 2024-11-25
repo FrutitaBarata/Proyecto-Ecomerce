@@ -1,0 +1,69 @@
+/* Enlace a Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap');
+
+/* Estilo general para todo el cuerpo de la página */
+body {
+    background-color: #2a2a2a; /* Fondo oscuro pero no tan intenso */
+    color: #f7c4b6; /* Color salmón para el texto */
+    font-family: 'Quicksand', sans-serif; /* Usar la fuente Quicksand */
+}
+
+/* Estilos para la tabla */
+table {
+    width: 100%;
+    background-color: #3c3c3c; /* Fondo para la tabla en un tono gris oscuro */
+    border-color: #666666;      /* Color de borde de la tabla */
+}
+
+th, td {
+    color: #f7c4b6;  /* Color salmón para el texto en celdas */
+    padding: 12px 15px;         /* Espaciado dentro de las celdas */
+    border: 1px solid #666666;  /* Bordes de las celdas */
+    text-align: left;
+}
+
+/* Estilo para el encabezado de la tabla */
+thead th {
+    background-color: #4c4c4c;  /* Fondo más oscuro para el encabezado */
+    color: #f7c4b6;   /* Color salmón en el encabezado */
+}
+
+/* Estilo para las filas del cuerpo de la tabla */
+tbody tr {
+    background-color: #3c3c3c;  /* Fondo gris oscuro para las filas */
+}
+
+tbody tr:hover {
+    background-color: #5c5c5c;  /* Fondo más claro cuando se hace hover sobre una fila */
+}
+
+/* Estilos para las imágenes dentro de las tablas */
+table img {
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+    border-radius: 50%;          /* Hace que las imágenes sean circulares */
+    border: none;                /* Eliminar cualquier borde */
+    margin: 0;                   /* Eliminar márgenes */
+    padding: 0;                  /* Eliminar relleno */
+    display: block;              /* Asegurarse de que no haya espacio adicional debajo de la imagen */
+}
+
+
+/* Opcional: cambio de estilo para enlaces si los hay */
+a {
+    color: #f7c4b6;  /* Color de los enlaces en un tono salmón claro */
+}
+
+/* Estilos de botones (si tienes) */
+button {
+    background-color: #666666;
+    color: #f7c4b6;   /* Color salmón para el texto del botón */
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #888888;   /* Cambia el color cuando se pasa el ratón sobre el botón */
+}
